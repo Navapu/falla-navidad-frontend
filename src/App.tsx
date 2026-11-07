@@ -76,7 +76,10 @@ function AuthPage({ mode, language, onAuth }: { mode: "login" | "register"; lang
 
 function Countdown({ deadline, language }: { deadline: string; language: Language }) {
   const value = useCountdown(deadline); const tr = (key: TranslationKey) => t(language, key);
-  return <section className={`countdown ${value.closed ? "is-closed" : ""}`}><div className="countdown-title"><Clock3/ ><span>{value.closed ? tr("closed") : tr("votingCloses")}</span></div>{!value.closed && <div className="countdown-grid">{([[value.days,"days"],[value.hours,"hours"],[value.minutes,"minutes"],[value.seconds,"seconds"]] as const).map(([number,key])=><div key={key}><strong>{String(number).padStart(2,"0")}</strong><span>{tr(key)}</span></div>)}</div>}</section>;
+  const closingDate = new Intl.DateTimeFormat(language === "es" ? "es-ES" : "ca-ES-valencia", {
+    day: "numeric", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit", timeZone: "Europe/Madrid",
+  }).format(new Date(deadline));
+  return <section className={`countdown ${value.closed ? "is-closed" : ""}`}><div className="countdown-title"><Clock3/ ><span>{value.closed ? tr("closed") : tr("votingCloses")}</span></div>{!value.closed && <div className="countdown-grid">{([[value.days,"days"],[value.hours,"hours"],[value.minutes,"minutes"],[value.seconds,"seconds"]] as const).map(([number,key])=><div key={key}><strong>{String(number).padStart(2,"0")}</strong><span>{tr(key)}</span></div>)}</div>}<div className="closing-date"><span>{tr("deadline")}</span><time dateTime={deadline}>{closingDate}</time><small>{tr("madridTime")}</small></div></section>;
 }
 
 function VotingPage({ user, setUser, config, refreshConfig, language }: { user: User; setUser: (u: User) => void; config: PublicConfig; refreshConfig: () => void; language: Language }) {
