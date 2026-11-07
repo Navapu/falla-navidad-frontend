@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import "./styles.css";
 import "./countdown.css";
+import "./admin-votes.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode><BrowserRouter><App /></BrowserRouter></StrictMode>,

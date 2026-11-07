@@ -22,6 +22,11 @@ export interface PublicConfig {
   voterCount: number;
 }
 
+export interface AdminUser extends User {
+  availability: { date: string; choice: Choice }[];
+  voteUpdatedAt: string | null;
+}
+
 export interface ResultItem {
   date: string;
   lunch: number;
