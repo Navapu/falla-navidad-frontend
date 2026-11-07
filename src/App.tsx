@@ -126,6 +126,7 @@ export default function App() {
   const onAuth=(result:AuthResponse)=>{setToken(result.token);setUser(result.user);}; const logout=()=>{setToken(null);setUser(null);};
   const props={user,language:prefs.language,setLanguage:prefs.setLanguage,theme:prefs.theme,setTheme:prefs.setTheme,logout};
   if(!ready)return <Loading language={prefs.language}/>;
+  if(!config && !user)return <Layout {...props}><Routes><Route path="/registro" element={<AuthPage mode="register" language={prefs.language} onAuth={onAuth}/>}/><Route path="*" element={<AuthPage mode="login" language={prefs.language} onAuth={onAuth}/>}/></Routes></Layout>;
   if(!config)return <div className="center-state"><h1>{prefs.language==="es"?"No se puede conectar con la aplicación":"No es pot connectar amb l'aplicació"}</h1><p>{prefs.language==="es"?"Comprueba la conexión e inténtalo de nuevo.":"Comprova la connexió i torna a intentar-ho."}</p><button className="primary-button" onClick={refreshConfig}>{prefs.language==="es"?"Reintentar":"Tornar a intentar"}</button></div>;
   return <Layout {...props}><Routes>
     <Route path="/" element={<Navigate to={user?"/votar":"/login"} replace/>}/><Route path="/login" element={user?<Navigate to="/votar"/>:<AuthPage mode="login" language={prefs.language} onAuth={onAuth}/>}/><Route path="/registro" element={user?<Navigate to="/votar"/>:<AuthPage mode="register" language={prefs.language} onAuth={onAuth}/>}/>
