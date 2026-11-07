@@ -1,0 +1,51 @@
+import type { Language } from "./types";
+
+const messages = {
+  es: {
+    tagline: "Nuestra Navidad, elegida entre todos",
+    login: "Entrar", register: "Crear cuenta", logout: "Salir", email: "Correo electrónico",
+    password: "Contraseña", firstName: "Nombre", lastName: "Apellidos", repeatPassword: "Repite la contraseña",
+    emailNoticeTitle: "Un correo importante", emailNotice: "Este será el correo utilizado para gestionar el amigo invisible si decides participar.",
+    secretSanta: "Quiero participar en el amigo invisible", secretSantaShort: "Amigo invisible",
+    secretWarning: "Apuntarte no garantiza participar: si no puedes acudir finalmente al día elegido, lo más probable es que quedes fuera del amigo invisible.",
+    heroTitle: "¿Cuándo hacemos nuestra comida o cena de Navidad?", heroText: "Marca tu disponibilidad del 18 al 30 de diciembre. Puedes cambiarla hasta que termine el plazo.",
+    days: "días", hours: "horas", minutes: "min", seconds: "seg", votingCloses: "La votación termina en",
+    closed: "Votación cerrada", peopleVoted: "personas ya han votado", availability: "Tu disponibilidad",
+    lunch: "Comida", dinner: "Cena", both: "Ambas", none: "No puedo", save: "Guardar mi voto", saved: "¡Tu disponibilidad está guardada!",
+    results: "Resultados", resultsLocked: "Los resultados aparecerán cuando termine la cuenta atrás.",
+    leadingDates: "Las fechas favoritas", totalVoters: "Votos recibidos", participants: "Amigo invisible",
+    dashboard: "Votación", admin: "Administración", greeting: "Hola", account: "Tu participación",
+    updateParticipation: "Actualizar participación", adminTitle: "Panel de organización", users: "Personas registradas",
+    deadline: "Cierre de la votación", enabledDates: "Días disponibles", updateConfig: "Guardar configuración",
+    delete: "Eliminar", voted: "Ha votado", notVoted: "Sin votar", adminBadge: "Admin", confirmDelete: "¿Eliminar esta cuenta y su voto?",
+    noAccount: "¿Todavía no tienes cuenta?", haveAccount: "¿Ya tienes cuenta?", passwordsMismatch: "Las contraseñas no coinciden",
+    registerConsent: "Entiendo que este correo se usará para el amigo invisible si participo.",
+    bestOption: "Opción más votada", votes: "votos", loading: "Preparando la pólvora…", error: "Algo no ha salido bien",
+    footer: "Hecho para Trifàsics · Falla Maestro Bellver – Mariano Ribera", castellano: "Castellano", valencia: "Valencià",
+  },
+  va: {
+    tagline: "El nostre Nadal, triat entre tots",
+    login: "Entrar", register: "Crear compte", logout: "Eixir", email: "Correu electrònic",
+    password: "Contrasenya", firstName: "Nom", lastName: "Cognoms", repeatPassword: "Repetix la contrasenya",
+    emailNoticeTitle: "Un correu important", emailNotice: "Este serà el correu utilitzat per a gestionar l'amic invisible si decidixes participar.",
+    secretSanta: "Vull participar en l'amic invisible", secretSantaShort: "Amic invisible",
+    secretWarning: "Apuntar-te no garantix participar: si finalment no pots vindre el dia triat, el més probable és que quedes fora de l'amic invisible.",
+    heroTitle: "Quan fem el nostre dinar o sopar de Nadal?", heroText: "Marca la teua disponibilitat del 18 al 30 de desembre. Pots canviar-la fins que acabe el termini.",
+    days: "dies", hours: "hores", minutes: "min", seconds: "seg", votingCloses: "La votació acaba en",
+    closed: "Votació tancada", peopleVoted: "persones ja han votat", availability: "La teua disponibilitat",
+    lunch: "Dinar", dinner: "Sopar", both: "Les dos", none: "No puc", save: "Guardar el meu vot", saved: "La teua disponibilitat està guardada!",
+    results: "Resultats", resultsLocked: "Els resultats apareixeran quan acabe el compte arrere.",
+    leadingDates: "Les dates favorites", totalVoters: "Vots rebuts", participants: "Amic invisible",
+    dashboard: "Votació", admin: "Administració", greeting: "Hola", account: "La teua participació",
+    updateParticipation: "Actualitzar participació", adminTitle: "Panell d'organització", users: "Persones registrades",
+    deadline: "Tancament de la votació", enabledDates: "Dies disponibles", updateConfig: "Guardar configuració",
+    delete: "Eliminar", voted: "Ha votat", notVoted: "Sense votar", adminBadge: "Admin", confirmDelete: "Vols eliminar este compte i el seu vot?",
+    noAccount: "Encara no tens compte?", haveAccount: "Ja tens compte?", passwordsMismatch: "Les contrasenyes no coincidixen",
+    registerConsent: "Entenc que este correu s'usarà per a l'amic invisible si participe.",
+    bestOption: "Opció més votada", votes: "vots", loading: "Preparant la pólvora…", error: "Alguna cosa no ha eixit bé",
+    footer: "Fet per a Trifàsics · Falla Maestro Bellver – Mariano Ribera", castellano: "Castellano", valencia: "Valencià",
+  },
+} as const;
+
+export type TranslationKey = keyof typeof messages.es;
+export function t(language: Language, key: TranslationKey) { return messages[language][key]; }
